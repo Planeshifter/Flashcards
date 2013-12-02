@@ -1,0 +1,559 @@
+\documentclass[avery5371,grid]{flashcards}
+
+\cardfrontstyle{headings}
+\cardfrontfoot{Intermediate Statistics}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{datetime}
+\usepackage{bbm}
+
+\begin{document}
+
+\begin{flashcard}[Theorem]{Alternative Formula for Expected Value}
+Let $X$ be a non-negative continuous random variable. Then 
+\[
+\mathbb E(X) = \int_0^\infty P\left(X > t\right) dt.
+\]
+Analogously, if $X$ is a discrete non-negative random variable, we have
+\[
+\mathbb E(X) = \sum_{k=1}^\infty P(X \ge k).
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Transformation of Random Variable}
+Let X be a random variable and define $Y=g(X)$, where $g$ must be a monotonic function. Then $Y$ has pdf
+\[
+p_Y(y) = p_X\left(g^{-1}(y)\right) \left| \frac{dg^{-1}(y)}{dy} \right|
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Sample Mean and Variance}
+Given a random sample $X_1,\ldots,X_n \sim N\left(\mu,\sigma^2\right)$, the following statements are true:
+\begin{itemize}
+ \item $\bar X \sim N\left(\mu,\frac{\sigma^2}{n}\right)$
+ \item $\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}$
+ \item $\bar X$ and $S^2$ are independent
+\end{itemize}
+
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Delta Method}
+if $X\sim N\left(\mu,\sigma^2\right)$ and $Y=g(X)$ with $\sigma^2$ small, we have
+\[ Y \approx N\left(g(\mu),\sigma^2(g'(\mu))^2\right)\]
+Proof: Start with Taylor Expansion of $g(X)$ around $\mu$.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Multivariate Delta Method}
+ Suppose that $Y_n = \left( Y_{n1}, \ldots, Y_{nk} \right)$ is a sequence of random variables such that 
+ \[
+ \sqrt{n}\left( Y_n - \mu \right) \rightsquigarrow N(0,\Sigma).
+ \]
+For a function $g: \mathbb R^k \to \mathbb R$ and the gradient of $g$ with respect to $y$ be $\nabla g(y) = \left( \frac{\partial g}{\partial y_1}, \ldots, \frac{\partial g}{\partial y_k} \right)^\intercal$. Denoting 
+with $\nabla_\mu$ the gradient evaluated at $y=\mu$ where all elements are assumed to be non-zero, we have
+\[
+\sqrt{n}\left( g(Y_n) - g(\mu) \right) \rightsquigarrow N\left(0,\nabla_\mu^\intercal \Sigma \nabla_\mu \right).
+\]
+\end{flashcard}
+
+
+\begin{flashcard}[Theorem]{Geometric Series}
+For $r \in (0,1)$, 
+\[a + ar + ar^2 + \ldots = \frac{a}{1-r}.\] A partial geometric series $a + ar + ar^2 + \ldots + ar^{n-1}$ sums up to $\frac{a(1-r^n)}{1-r}$
+\end{flashcard}
+
+
+\begin{flashcard}[Theorem]{Gaussian Tail Inequality}
+If $X \sim N(0,1)$, then 
+\[
+P(|X|>\varepsilon) \le \frac{2}{\varepsilon}e^{-\varepsilon^2/2}.
+\]
+In general, for a sample $X_1, \ldots, X_n$ where $X_i \sim N\left(\mu,\sigma^2\right)$, we have
+\[
+P\left(\left|\bar X_n - \mu \right| > \varepsilon \right) \le \frac{2\sigma}{\varepsilon \sqrt{n}} \exp \left( - \frac{n\varepsilon^2}{2\sigma^2} \right)
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Markov's Inequality}
+If $X$ is a non-negative random variable with existing expectation $\mathbb{E}(X)$, then
+\[
+P\left(X > \varepsilon \right) \le \frac{\mathbb E (X)}{\varepsilon}
+\]
+Proof:
+Trivially, the inequality $\varepsilon \mathbbm 1 (X > \varepsilon) \le X$ holds. Taking the expectation on both sides and rearranging yields Markov's inequality.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Chebyshev's Inequality}
+Let $X$ be a random variable with mean $\mu$ and variance $\sigma^2$. Then
+\[
+P\left(\left|X-\mu\right| > \varepsilon\right) \le \frac{\sigma^2}{\varepsilon}
+\]
+Proof:
+Define $ Z = (X - \mu)^2$. By Markvo's Inequality, we have $P ( Z > \varepsilon^2) \le \frac{\mathbb{E}(Z)}{\varepsilon^2}$
+which is equivalent to 
+\[
+P\left(\left| X - \mu \right| > \varepsilon\right) \le \frac{\mathbb{E}\left[\left(X-\mu\right)^2\right]}{\varepsilon^2} = \frac{\sigma^2}{\varepsilon^2}
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Hoeffding's Inequality}
+Let $X_1, \ldots,X_n$ be independent observations such that $\mathbb{E}[X_i] = \mu$ and $a \le X_i \le b \quad \forall i$. Then, for any $\varepsilon > 0$, we have
+\[
+P\left(\left|\bar X_n - \mu \right| > \varepsilon\right) \le 2\exp\left( \frac{-2n\varepsilon^2}{(b-a)^2}  \right)
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Bernstein's Inequality}
+Let $X_1, \ldots, X_n$ be independent observations such that $\mathbb{E}[X_i] = 0$, $|X_i| \le M$, and $\mathbb{V}(X_i) \le \sigma^2$. Then, for every $\varepsilon > 0$, we have
+\[
+P\left(\left|\bar X_n \right| \ge \varepsilon\right) \le 2 \exp\left(-\frac{n\varepsilon^2}{2\sigma^2+\frac{2}{3}M\varepsilon}\right).
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{McDiarmid's Inequality}
+\scriptsize
+Let $X_1,\ldots,X_n$ be independent random variables. Suppose that
+
+\begin{multline}
+ \sup_{x_1,\ldots,x_n,x_i'}\left| g(x_1,\ldots,x_{i-1},x_i,x_{i+1},\ldots,x_n)\right.
+  \\ \left. -  g(x_1,\ldots,x_{i-1},x_i',x_{i+1},\ldots,x_n) \right| \le c_i 
+\end{multline}
+
+for $i = 1, \ldots, n$.
+Then 
+\[
+P\left( g\left( X_1, \ldots, X_n\right) - \mathbb{E}\left[ g\left( X_1, \ldots, X_n\right) \right] \ge \varepsilon \right) \le \exp{-\frac{2\varepsilon^2}{\sum_{i=1}^n c_i^2}}.
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Jensen's Inequality}
+Let $X$ be a random variable and $g$ a convex function. Then $\mathbb{E}g(X) \ge g\left( \mathbb{E}(X) \right)$.
+On the other hand, if $g$ is concave, we have $\mathbb{E}g(X) \le g\left( \mathbb{E}(X) \right)$.
+Example:
+From Jensen's inequality, it follows that 
+$\mathbb{E}(X^2) \ge \mathbb E(X)^2,
+$
+since $g(x)=x^2$ is convex. 
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Cauchy-Schwartz Inequality}
+Let $X$ and $Y$ be two random variables with finite variance. Then 
+\[
+\mathbb{E}\left|XY\right| \le \sqrt{\mathbb E (X^2) \mathbb{E}(Y^2)}.
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Little $o$}
+$a_n = o(b_n)$ means that $\forall C$ and $n > n_0$, 
+\[a_n < C b_n\] ($a_n$ is bounded from above by $b_n$)
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Big $O$}
+ $a_n = O(b_n)$ if for large $n > n_0$, there exists some constant $C>0$ such that $a_n < C b_n$ 
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Little $o_p$}
+$Y_n$ is $o_p(1)$ if, for every $\varepsilon > 0$, we have
+\[
+P\left( |Y_n| > \varepsilon \right) \to  0
+\]
+or equivalently
+\[
+P\left( |Y_n| \le \varepsilon \right) \to 1.
+\]
+$Y_n = o_p(a_n)$ means that $\frac{Y_n}{a_n} = o_p(1)$.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Big $o_p$}
+$Y_n$ is $O_p(1)$ if, for any $\varepsilon > 0$, there exists some finite constant $C>0$ such that 
+\[
+P\left( |Y_n|  >  C \right) \le \varepsilon
+\]
+for all $n$ (stochastically bounded from above). $Y_n = O_p(a_n)$ means that $\frac{Y_n}{a_n} = O_p(1)$.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Consistent Estimator}
+A sequence of estimators $\theta_n$ is consistent of the parameter $\theta$ if, for every $\epsilon > 0$ and every $\theta \in \Theta$ we have
+\[
+\lim_{n \to \infty} P_\theta\left(\left|\theta_n - \theta\right|<\epsilon\right) = 1
+\] 
+or equivalently 
+\[
+\lim_{n \to \infty} P_\theta\left(\left|\theta_n - \theta\right| \ge \epsilon\right) = 0,
+\]
+i.e. $\theta_n$ converges in probability to $\theta$.
+
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Consistency Conditions}
+Let $\theta_n$ be a sequence of estimators of parameter $\theta$ satisfying
+\[ \lim_{n \to \infty} \mathbb V\left(\hat \theta_n\right) = 0	\]
+and 
+% % \[ \lim_{n \to \infty} \text{Bias}\left(\hat \theta_n\right) = 0.\]
+Then $\hat \theta_n$ is a consistent sequence of estimators of $\theta$.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Consistency of MLE}
+\scriptsize
+Let $\hat \theta$ be the MLE of $\theta$ and let $\tau(\theta)$ be a continuous function of $\theta$. Under regularity conditions, for every $\epsilon > 0$ and $\theta \in \Theta$,
+\[
+lim_{n \to \infty} P_\theta \left(\left|\tau(\hat \theta) - \tau(\theta)\right| \ge \epsilon\right) = 0,
+\]
+i.e. $\tau(\hat \theta)$ is a consistent estimator of $\theta$. The conditions are a) an iid random sample, b) identifiability of the parameter, c) common support and differentiability
+of the density and d) a parameter space which contains an open set of which the true parameter is an interior point.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Shattering}
+Let $\mathcal{A}$ be a class of sets and $F$ be a finite set $\{x_1,\ldots,x_k\}$. Let $G$ be some subset of $F$. $\mathcal A$ picks out $G$ if $A \cap F = G$ for some 
+$A \in \mathcal{A}$.
+The set $F$ is shattered if $s(\mathcal{A},F) = 2^k$, i.e. if all subsets can be picked out by $\mathcal{A}$. 
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Shatter Coefficient}
+ The shatter coefficient is defined as
+ \[
+ s_k(\mathcal{A}) = \sup_{F\in \mathcal{F}_k} s(\mathcal{A},F),
+ \]
+where $\mathcal{F}_k$ denotes all finite sets with $k$ elements. 
+Fact: $s_k(\mathcal{A}) \le 2^k$. 
+\end{flashcard}
+
+
+
+\begin{flashcard}[Definition]{VC Dimension}
+ The Vapnik-Chervonenkis (VC) Dimension is defined as
+ \[
+ d = d(\mathcal{A}) = \text{largest k such that } s_k(\mathcal{A}) = 2^k.
+ \]
+This means that $d$ is the size of the largest set that can be shattered.
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Uniform Distribution}
+\scriptsize
+A continuous random variable $X$ has a $\text{Uniform}(a,b)$ distribution if its pdf is 
+\[\begin{cases} \frac{1}{b - a} & \text{for } x \in [a,b] \\ 0 & \text{otherwise} \end{cases}\]
+and CDF
+\[\begin{cases} 0 & \text{for } x < a \\ \frac{x-a}{b-a} & \text{for } x \in [a,b) \\ 1 & \text{for } x \ge b \end{cases}.\]
+The mean of $X$ is $\frac{1}{2}(a+b)$ and the variance $\tfrac{1}{12}(b-a)^2$.
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Multinomial Distribution}
+Multivariate version of Binomial. Draw all from urn with balls colored
+in$k$different colors. $p=\left(p_{1},\ldots,p_{k}\right)$ where
+$\sum_{j}p_{j}=1$ and $p_{j}$ is probability of drawing color $j$.
+Draw $n$ balls from the urn with replacement and let $X=\left(X_{1},\ldots,X_{n}\right)$be
+the count of the number of balls of each color. Then $X$ has a Multinomial
+distribution with pdf 
+\[
+p\left(x\right)=\left(\begin{array}{c}
+n\\
+x_{1}\ldots x_{k}
+\end{array}\right)p_{1}^{x_{1}}\ldots p_{k}^{x_{k}}.
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Statistic}
+A statistic $T$ is any function of the data $X_1, \ldots, X_n$, i.e. $T=g(X_1,\ldots,X_n)$.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Almost Sure Convergence}
+$X_n$ converges almost surely to X, written $X_n \overset{a.s.}{\longrightarrow} X$, if, for every $\varepsilon > 0$, 
+\[
+P\left( \lim_{n \to \infty} \left| X_n - X \right| < \varepsilon \right) = 1.
+\]
+Almost sure convergence of $X_n$ to $X$ is equivalent to 
+\[
+\forall \varepsilon > 0: \lim_{n \to \infty} P\left( \sup_{m \ge n} \left| X_m - X \right| \le \varepsilon \right) = 1.
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Convergence in Probability}
+$Xn$ converges to $X$ in probability $(X_n \overset{P}{\longrightarrow} X)$, if
+\[
+\forall \varepsilon > 0: P\left( \left| X_n - X \right| > \varepsilon \right) \to 0
+\]
+as $n \to \infty$ (notice that we thus have $X_n - X = o_P(1)$).
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Convergence in Quadratic Mean}
+A sequence of random variables $X_n$ converges to $X$ in quadratic mean ($L_2$ convergence) if 
+\[
+\mathbb{E}(X_n - X)^2 \to 0
+\]
+as $n \to \infty$. We write $X_n \overset{q.m.}{\longrightarrow} X$.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Convergence in Distribution}
+ $X_n$ converges to $X$ in distribution if 
+ \[
+ \lim_{n \to \infty} F_n(t) = F(t)
+ \]
+ at all $t$ for which $F$ is continuous. We write $X_n \rightsquigarrow X$.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Convergence Relationships}
+Between the different convergence definitions, the following relationships hold:
+\begin{itemize}
+ \item $X_n \overset{a.s.}\longrightarrow X$ implies that $X_n \overset{P} \to X$.
+ \item $X_n \overset{q.m.}\longrightarrow X$ implies that $X_n \overset{P}\to X$.
+ \item $X_n \overset{P}\to X$ implies that $X_n \rightsquigarrow x$.
+ \item If $X_n \rightsquigarrow X$ and if $X$ has a point mass distribution, i.e. $P(X=c)=1$ for some $c$, then $X_n \overset{P}\to X$.
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Continuous Mapping Theorem}
+Let $X_n$ and $Y_n$ be sequences of random variables. Also, let $X$ and $Y$ be simple random variables. For a continuous function $g$, we have
+\begin{enumerate}
+ \item If $X_n \overset{P} \to X$, then $g(X_n) \overset{P} \to g(X)$.
+ \item If $X_n \rightsquigarrow X$, then $g(X_n) \rightsquigarrow g(X)$.
+\end{enumerate}
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Slutsky's Theorem}
+Let $X_n$ and $Y_n$ be sequences of random variables and let $X$  be a simple random variable and $c$ a constant. We have 
+\begin{itemize}
+ \item If $X_n \rightsquigarrow X$ and $Y_n \rightsquigarrow c$, then $X_n + Y_n \rightsquigarrow X + c$.
+ \item If $X_n \rightsquigarrow X$ and $Y_n \rightsquigarrow c$, then $X_nY_n \rightsquigarrow cX$.
+\end{itemize}
+In general, $X_n \rightsquigarrow X$ and $Y_n \rightsquigarrow Y$ does not imply that $X_n + Y_n \rightsquigarrow X + Y$.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{The Weak Law of Large Numbers (WLLN)}
+Given a random sample $X_1, \ldots, X_n$ iid, the sample mean $\bar X_n$ converges in probability to $\mu$. Therefore, $\bar X_n - \mu = o_p(1)$. 
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{The Strong Law of Large Numbers (SLLN) }
+Let $X_1,\ldots, X_n$ be iid with mean $\mu$. Then we have $\bar X_n \overset{a.s.} \longrightarrow \mu$. 
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{The Central Limit Theorem (CLT)}
+Let $X_1, \ldots, X_n$ be an iid sample where $\mathbb E (X_i) = \mu$ and $\mathbb V (X_i) = \sigma^2$. Let $\bar X_n = n^{-1} \sum_{i=1}^n X_i$. Then 
+\[
+Z_n \equiv \frac{\bar X_n - \mu}{\sqrt{\mathbb V\left(\bar X_n \right)}} = \frac{\sqrt{n}\left(\bar X_n -\mu \right)}{\sigma} \rightsquigarrow Z, 
+\]
+where $Z \sim N(0,1)$.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Estimate $\sigma$ in CLT}
+Let $X_1, \ldots, X_n$ be an iid sample where $\mathbb E (X_i) = \mu$ and $\mathbb V (X_i) = \sigma^2$. Let $\bar X_n = n^{-1} \sum_{i=1}^n X_i$. Denote the sample variance with
+$S_n^2 = \frac{1}{n-1} \sum_{i=1}^n \left( X_i - \bar X_n \right)^2$. Then 
+\[
+T_n = \frac{\sqrt{n}\left(\bar X_n -\mu \right)}{S_n} \rightsquigarrow N(0,1).
+\]
+Proof:  We have that $T_n = Z_nW_n$, where $Z_n = \frac{\sqrt{n}\left(\bar X_n -\mu \right)}{\sigma} \rightsquigarrow N(0,1)$ and $W_n = \frac{\sigma}{S_n} \overset{P} \to 1$. The result
+then follows from Slutsky's Theorem.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Multivariate Central Limit Theorem}
+Let $X_1,\ldots,X_n$ be a sample of iid random vectors where $X_i = \left( X_{1i} , \ldots, X_{ki} \right)^\intercal$ with mean $\mu = \left( \mu_1, \ldots, \mu_k \right)^\intercal$ 
+and covariance matrix $\Sigma$. Let $\bar X = \left( \bar X_1 , \ldots, \bar X_k \right)^\intercal$ where $\bar X_j = n^{-1} \sum_{i=1}^n X_{ji}$. Then,
+\[
+\sqrt{n} \left(\bar X - \mu \right) \rightsquigarrow N(0,\Sigma)
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Loss Function}
+A loss function $L\left(\theta, \hat \theta \right) : \Theta^2 \to \left[0,\infty\right)$ measures the cost associated with the value of an 
+estimator $\hat \theta$ not being equal to the true parameter $\theta$. Common loss functions are 
+\begin{enumerate}
+ \item Squared Loss
+ \item Absolute Loss
+ \item Zero-One Loss
+\end{enumerate}
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Risk of an Estimator}
+ The risk of an estimator $\hat \theta$ is the expected value of the associated loss function,
+ where the expectation is taken over all sample variables:
+ \[
+ R\left( \theta, \hat \theta \right) = \mathbb E \left( L\left(\theta, \hat \theta \right) \right)
+ = \int L\left(\theta, \hat \theta\left(x^n\right) \right) p(x^n;\theta) dx^n
+ \]
+ Under squared error loss, the risk is equal to the mean squared error.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Minimax Risk}
+ The minimax risk is defined as
+ \[
+ R_n = \inf_{\hat \theta} \sup_\theta R\left( \theta, \hat \theta \right).
+ \]
+It is the risk of the estimator whose maximal risk is lowest among all competing estimators
+$\hat \theta$. It follows that an estimator $\hat \theta$ is minimax if 
+\[
+\sup_\theta R\left( \theta, \hat \theta \right) = \inf_{\hat \theta} \sup_\theta R\left( \theta, \hat \theta \right).
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bayes Risk}
+\scriptsize
+The Bayes risk of an estimator $\hat \theta$ with prior distribution $\pi$ is
+\[
+B_\pi (\hat\theta) = \int R\left( \theta, \hat \theta \right) \pi\left(\theta \right) d\theta. 
+\] 
+Notice that the remaining uncertainty of the risk lies in different values for $\theta$: The risk already has dealt with 
+uncertainty in the data, as 
+\[
+R\left( \theta, \hat \theta \right) = \mathbb{E}_\theta {\left( L(\theta, \hat \theta)\right)}
+\]
+Estimators which minimize the Bayes risk are called \textit{Bayes estimators}.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Posterior Risk}
+ The posterior risk of an estimator $\hat \theta(x^n)$ is 
+ \[
+ r(\hat \theta | x^n) = \int L(\theta, \hat \theta(x^n)) \pi(\hat \theta | x^n) d\theta
+ \]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Bayes Risk (in terms of posterior risk)}
+ The Bayes risk $B_\pi (\hat \theta)$ can also be expressed as
+ \[
+ B_\pi(\hat \theta) = \int  r(\hat \theta | x^n) m(x^n) dx^n,
+ \]
+ where $m(x^n)$ is the marginal distribution of the data (sometimes called the \textit{evidence}). An estimator
+ $\hat \theta$ which minimizes the posterior risk is therefore a Bayes estimator 
+ since the integrand in  $B_\pi(\hat \theta)$ will be minimal at all $x$.  
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Common Bayes Estimators}
+\begin{itemize}
+ \item Under squared error loss, the Bayes estimator is the poseterior mean 
+ $\mathbb{E}(\theta|X=x^n)$.
+ \item Under absolute loss, the Bayes estimator is the posterior median 
+ $F_{\theta|X}^{-1}(\frac{1}{2})$. 
+ \item Under 0-1-loss, the Bayes estimator is the posterior mode of $\pi(\theta|x^n)$.
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Minimax of Bayes Estimator}
+\scriptsize
+ Let $\hat \theta$ be the Bayes estimator under some prior $\pi$. If its risk is always smaller 
+ than the Bayes risk, i.e. if 
+ \[
+ R(\theta, \hat \theta) \le B_\pi (\hat \theta) \quad \forall \theta,
+ \]
+ then $\hat \theta$ is the minimax estimator and $\pi$ is called a least favorable prior.
+Proof: By contradiction. Assume that $\hat \theta$ was not minimax. Then show that this would imply that the estimator
+did not minimize the Bayes risk in the first place (Hint: The average of a function is always less than or equal to its maximum).
+ \end{flashcard}
+
+\begin{flashcard}[Theorem]{Bayes Estimator with Constant Risk}
+\scriptsize
+Let $\hat \theta$ be the Bayes estimator under some prior distribution $\pi$. If the risk is constant (with respect to
+$\theta$) then this estimator is minimax. 
+Proof: We have that $R\left(\theta,\hat \theta \right) = c$, where $c$ is some constant.
+It follows that $B_\pi (\hat \theta) = \int  r(\hat \theta | x^n) m(x^n) dx^n = c$ as well and hence
+$R\left(\theta,\hat \theta \right) \le B_\pi (\hat \theta)$ holds for all $\theta$. By the 
+``Minimax of Bayes Estimator'' Theorem, this implies that the estimator is minimax. 
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{p-value}
+Suppose we have a test of the form: reject when $W(X^n)>c$. Then the p-value when $X^n = x^n$ is 
+\[
+p(x^n)=\sup_{\theta \in \Theta_0} P_\theta \left(W(X^n) \ge W(x^n) \right)
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Likeliood Function}
+ Let $X^n = \left(X_1, \ldots, X_n\right)$ have joint density $p(x^n;\theta)$ where $\theta \in \Theta$.
+ The likelihood function $L: \Theta \to [0,\infty)$ is the joint density regarded as a function of parameter $\theta$, i.e.
+ \[
+ L(\theta) = p(x^n;\theta).
+ \]
+The likelihood is not a pdf and defined only up to a constant of proportionality.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Equivariance Property of MLE}
+\scriptsize
+Let $\hat \theta$ be the MLE. If $\eta = g(\theta)$, then the MLE of $\eta$ is 
+$\hat \eta = g(\hat \theta)$.
+Proof: Suppose $g$ is invertible so $\eta = g(\theta)$ and $\theta = g^{-1}(\eta)$. Define
+$L^\star(\eta) = L(\theta)$ where $\theta = g^{-1}(\eta)$. Hence,
+\[
+L^\star(\hat \eta)  = L(\hat \theta) \ge L(\theta) = L^{\star}(\eta)
+\]
+and thus $\hat \eta$ maximizes $L^\star(\eta)$. For non-invertible functions, this still holds if
+we define
+\[
+L^\star(\eta) = \sup_{\theta: \tau(\theta) = \eta} L(\theta).
+\]
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Mean Squared Error (MSE)}
+The mean squared error (MSE) is
+\[
+MSE = \mathbb{E}_\theta \left[ (\hat \theta - \theta)^2 \right] = \int (\hat \theta(x^n) - \theta)^2 p(x^n;\theta) dx^n.
+\]
+The MSE can be decomposed into variance and bias squared, i.e.
+\[
+MSE = \mathbb{V}_\theta(\hat \theta) + Bias^2,
+\]
+where $Bias = \mathbb{E}_\theta(\hat \theta) - \theta$.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Rao-Blackwell Theorem}
+Let $W$ be an unbiased estimator of $\tau(\theta)$ and let $T$ be a sufficient statistic. Define
+$W' = \mathbb{E}(W|T)$. Then $W'$ is unbiased with variance $\mathbb{V}_\theta (W') \le 
+\mathbb{V}_\theta(W) \quad \forall \theta$.
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Sufficiency}
+Suppose that we have a random sample $X_1, \ldots, X_n \sim p(x;\theta)$. An estimator $T$
+is sufficient for $\theta$ if the conditional distribution of $X_1,\ldots,X_n|T$ does not depend on $\theta$.
+Thus $p(x_1,\ldots, x_n|t,\theta) = p(x_1, \ldots, x_n | t)$.
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Factorization Theorem}
+An estimator $T(X^n)$ is sufficient for $\theta$ if the joint pdf of $X^n$ can be factored as
+\[
+p(x^n|\theta) = h(x^n) g \left(T(x^n);\theta \right).
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Minimal Sufficiency}
+$T$ is a minimal sufficient statistic for $\theta$ if it is sufficient and
+if it is a function of any other sufficient statistic $U$, i.e. $T=g(U)$ for some function $g$.
+\end{flashcard}
+
+
+\begin{flashcard}[Theorem]{Find Minimal Sufficient Statistic}
+An estimator T is minimal sufficient if and only if it has the following property:
+\[
+T(y^n) = T(x^n) \leftrightarrow \frac{p(y^n;\theta)}{p(x^n;\theta)} \text{ does not depend on } \theta
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Empirical CDF}
+\scriptsize
+The empirical cumulative distribution function (ECDF) puts mass $\frac{1}{n}$ at each 
+data point. It is defined as
+\[
+\hat F_n(x) = \frac{1}{n} \sum_{i=1}^n \mathbbm 1 (X_i \le x).
+\]
+Notice that $\hat F_n(x) \sim \text{Bernoulli}(F_X(x))$. We also have that 
+\[
+P\left( \sup_x |\hat F(x) - F(x) | > \varepsilon \right) \le 2e^{-2n\varepsilon^2},
+\]
+that is $\sup_x |\hat F(x) - F(x) | \overset{P} \longrightarrow 0$.
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Kernel Density Estimator}
+The kernel density estimator is a non-parametric estimator of the density function. It is defined a
+\[
+\hat p_n(x) = \frac{1}{n} \sum_{i=1}^n \frac{1}{h} K\left( \frac{x-X_i}{h}\right),
+\]
+where $h>0$ is the bandwidth and $K$, the kernel, is a symmetric density with mean zero.
+\end{flashcard}
+
+
+
+
+\end{document}
