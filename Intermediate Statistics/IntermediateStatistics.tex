@@ -232,32 +232,6 @@ Fact: $s_k(\mathcal{A}) \le 2^k$.
 This means that $d$ is the size of the largest set that can be shattered.
 \end{flashcard}
 
-
-\begin{flashcard}[Definition]{Uniform Distribution}
-\scriptsize
-A continuous random variable $X$ has a $\text{Uniform}(a,b)$ distribution if its pdf is 
-\[\begin{cases} \frac{1}{b - a} & \text{for } x \in [a,b] \\ 0 & \text{otherwise} \end{cases}\]
-and CDF
-\[\begin{cases} 0 & \text{for } x < a \\ \frac{x-a}{b-a} & \text{for } x \in [a,b) \\ 1 & \text{for } x \ge b \end{cases}.\]
-The mean of $X$ is $\frac{1}{2}(a+b)$ and the variance $\tfrac{1}{12}(b-a)^2$.
-
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Multinomial Distribution}
-Multivariate version of Binomial. Draw all from urn with balls colored
-in$k$different colors. $p=\left(p_{1},\ldots,p_{k}\right)$ where
-$\sum_{j}p_{j}=1$ and $p_{j}$ is probability of drawing color $j$.
-Draw $n$ balls from the urn with replacement and let $X=\left(X_{1},\ldots,X_{n}\right)$be
-the count of the number of balls of each color. Then $X$ has a Multinomial
-distribution with pdf 
-\[
-p\left(x\right)=\left(\begin{array}{c}
-n\\
-x_{1}\ldots x_{k}
-\end{array}\right)p_{1}^{x_{1}}\ldots p_{k}^{x_{k}}.
-\]
-\end{flashcard}
-
 \begin{flashcard}[Definition]{Statistic}
 A statistic $T$ is any function of the data $X_1, \ldots, X_n$, i.e. $T=g(X_1,\ldots,X_n)$.
 \end{flashcard}
@@ -554,6 +528,141 @@ where $h>0$ is the bandwidth and $K$, the kernel, is a symmetric density with me
 \end{flashcard}
 
 
+\begin{flashcard}[Definition]{Uniform Distribution}
+\scriptsize
+A continuous random variable $X$ has a $\text{Uniform}(a,b)$ distribution if its pdf is 
+\[\begin{cases} \frac{1}{b - a} & \text{for } x \in [a,b] \\ 0 & \text{otherwise} \end{cases}\]
+and CDF
+\[\begin{cases} 0 & \text{for } x < a \\ \frac{x-a}{b-a} & \text{for } x \in [a,b) \\ 1 & \text{for } x \ge b \end{cases}.\]
+The mean of $X$ is $\frac{1}{2}(a+b)$ and the variance $\tfrac{1}{12}(b-a)^2$.
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Normal Distribution}
+\begin{itemize}
+\item $f_X(x) = \frac{1}{\sqrt{2\pi \sigma}} e^{-(x-\mu)^2 / (2\sigma^2)}$
+\item $- \infty < x < \infty, - \infty < \mu < \infty, \sigma^2 > 0$
+\item $M_{X}\left(t\right) = e^{\mu t + \sigma^2 t^2 / 2}$
+\item $\mathbb{E} \left[ X \right] = \mu$, $\mathbb{V}\left[X\right]= \sigma^2$
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Multivariate Normal Distribution}
+\begin{itemize}
+\item Let $X \in \mathbb{R}^d$. Then $X \sim N(\mu, \Sigma)$ if 
+\[
+f_X(x) = \frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}} e^{-\frac{1}{2}(x-\mu)^\intercal \Sigma^{-1} (x-\mu)}
+\]
+\item $M_{X}\left(t\right) = \exp \left(\mu^\intercal t + \frac{t^\intercal \Sigma t}{2} \right)$
+\item $\mathbb{E} \left[ X \right] = \mu$, $\text{cov}\left[X\right]= \Sigma$
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Multivariate Normal Transformations}
+Assume that $X \in \mathbb{R}^d$ and that $X \sim N(\mu, \Sigma)$. Then the following statements
+are true:
+\begin{itemize}
+\item If X is multiplied with a scalar $c$, we have
+$cY \sim N(c\mu,c^2\Sigma)$
+\item If $A$ is a $p \times n$ matrix and $b$ is a $p \times 1$ column vector, then 
+$AY + b \sim N(A\mu + b, A\Sigma A^\intercal).$
+\item $(X-\mu)^\intercal \Sigma^{-1} (X - \mu) \sim \chi_d^2$
+\end{itemize}
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Multinomial Distribution}
+Multivariate version of Binomial. Draw all from urn with balls colored
+in $k$ different colors. $p=\left(p_{1},\ldots,p_{k}\right)$ where
+$\sum_{j}p_{j}=1$ and $p_{j}$ is probability of drawing color $j$.
+Draw $n$ balls from the urn with replacement and let $X=\left(X_{1},\ldots,X_{n}\right)$be
+the count of the number of balls of each color. Then $X$ has a Multinomial
+distribution with pdf 
+\[
+p\left(x\right)=\left(\begin{array}{c}
+n\\
+x_{1}\ldots x_{k}
+\end{array}\right)p_{1}^{x_{1}}\ldots p_{k}^{x_{k}}.
+\]
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Binomial Distribution}
+Sequence of Bernoulli Trials
+\begin{itemize}
+\item $P\left(X=k\right)=\textstyle {n \choose k}\, p^k (1-p)^{n-k}$
+\item $k \in \{ 0, \ldots, n \},0\le p \le 1$
+\item $M_{X}\left(t\right)= (1-p + p e^t)^n \!$
+\item $\mathbb{E}\left[X\right]=np$, $\mathbb{V}\left[X\right]=np\left(1-p\right)$
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bernoulli Distribution}
+\begin{itemize}
+\item $P\left(X=x\right)=p^{x}\left(1-p\right)^{1-x}$
+\item $x \in \left \{ 0,1\right\},0\le p\le1$
+\item $M_{X}\left(t\right)=\left(1-p\right)+pe^{t}$
+\item $\mathbb{E}\left[X\right]=p$, $\mathbb{V}\left[X\right]=p\left(1-p\right)$
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Geometric Distribution}
+\begin{itemize}
+\item $P\left(X=x\right)=p (1-p)^{x-1}$
+\item $x \in \left\{ 0,1, \ldots \right\},0\le p\le1$
+\item $M_{X}\left(t\right)=\frac{p e^t}{1 - (1 - p) e^t}, t < - \log (1-p)$
+\item $\mathbb{E}\left[X\right]=\frac{1}{p}$, $\mathbb{V}\left[X\right]= \frac{1-p}{p^2}$
+\item Only existing discrete distribution with memoryless property: $P(X>s|X>t) = P(X>s-t)$
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Poisson Distribution}
+\begin{itemize}
+\item $P\left(X=k\right)= \frac{e^{-\lambda} \lambda^k}{k!}$
+\item $x \in \left\{ 0,1, \ldots \right\},0\le \lambda < \infty$
+\item $M_{X}\left(t\right)= e^{\lambda(e^t - 1)}$
+\item $\mathbb{E}\left[X\right]=\lambda$, $\mathbb{V}\left[X\right]= \lambda$
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Exponential Distribution}
+\begin{itemize}
+\item $f_X(x) = \frac{1}{\beta} e^{(-x/\beta)}$
+\item $ 0 \le x < \infty, \beta > 0$
+\item $M_{X}\left(t\right)= \frac{1}{1-\beta t}, t<\frac{1}{\beta}$
+\item $\mathbb{E}\left[X\right]=\beta$, $\mathbb{V}\left[X\right]= \beta^2$
+\item Only continuous distribution with memoryless property: $P(X>s|X>t) = P(X>s-t)$. 
+\item Special case of Gamma distribution with $\alpha = 1$.
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Beta Distribution}
+\begin{itemize}
+\item $f_X(x) = \frac{1}{B(\alpha, \beta)} x^{\alpha -1} (1-x)^{\beta -1}$
+\item $0 \le x \le 1, \alpha > 0, \beta > 0$
+\item $M_{X}\left(t\right)= 1 + \sum_{k=1}^\infty  \left( \prod_{r=0}^{k-1} \frac{\alpha + r}{\alpha + \beta + r} \right) \frac{t^k}{k!}$
+\item $\mathbb{E}\left[X\right]=\frac{\alpha}{\alpha + \beta}$, $\mathbb{V}\left[X\right]= \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}$
+\item Recall that the beta function can be defined in terms of the Gamma function: $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Gamma Distribution}
+\begin{itemize}
+\item $f_X(x) = \frac{1}{\Gamma(\alpha) \beta^\alpha} x^{\alpha -1} e^{(-x/\beta)}$
+\item $0 \le x < \infty, \; \alpha,\beta > 0$
+\item $M_{X}\left(t\right)= \left( \frac{1}{1-\beta t} \right)^\alpha, \; t<\frac{1}{\beta}$
+\item $\mathbb{E}\left[X\right]=\alpha \beta$, $\mathbb{V}\left[X\right]= \alpha \beta^2$
+\item When $\alpha = 1$, the Gamma becomes the Exponential distribution. With  $\alpha = \frac{p}{2}$ and $\beta = 2$, the chi-squared distribution is recovered.
+\end{itemize}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Cauchy Distribution}
+\begin{itemize}
+\item $f_X(x) = \frac{1}{\pi \sigma} \frac{1}{1+\left( \frac{x-\theta}{\sigma} \right)^2}$
+\item $- \infty < x < \infty, \; - \infty < \mu < \infty, \; \sigma > 0$
+\item The moments and mgf of the Cauchy do not exist (major consequence: CLT does not  apply)
+\item If $X, Y \sim N(0,1)$, the ratio $X / Y$ has the Cauchy distribution
+\end{itemize}
+\end{flashcard}
 
 
 \end{document}
