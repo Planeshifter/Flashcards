@@ -88,7 +88,7 @@ Trivially, the inequality $\varepsilon \mathbbm 1 (X > \varepsilon) \le X$ holds
 \begin{flashcard}[Theorem]{Chebyshev's Inequality}
 Let $X$ be a random variable with mean $\mu$ and variance $\sigma^2$. Then
 \[
-P\left(\left|X-\mu\right| > \varepsilon\right) \le \frac{\sigma^2}{\varepsilon}
+P\left(\left|X-\mu\right| > \varepsilon\right) \le \frac{\sigma^2}{\varepsilon^2}
 \]
 Proof:
 Define $ Z = (X - \mu)^2$. By Markvo's Inequality, we have $P ( Z > \varepsilon^2) \le \frac{\mathbb{E}(Z)}{\varepsilon^2}$
@@ -200,7 +200,7 @@ Then $\hat \theta_n$ is a consistent sequence of estimators of $\theta$.
 \scriptsize
 Let $\hat \theta$ be the MLE of $\theta$ and let $\tau(\theta)$ be a continuous function of $\theta$. Under regularity conditions, for every $\epsilon > 0$ and $\theta \in \Theta$,
 \[
-lim_{n \to \infty} P_\theta \left(\left|\tau(\hat \theta) - \tau(\theta)\right| \ge \epsilon\right) = 0,
+\lim_{n \to \infty} P_\theta \left(\left|\tau(\hat \theta) - \tau(\theta)\right| \ge \epsilon\right) = 0,
 \]
 i.e. $\tau(\hat \theta)$ is a consistent estimator of $\theta$. The conditions are a) an iid random sample, b) identifiability of the parameter, c) common support and differentiability
 of the density and d) a parameter space which contains an open set of which the true parameter is an interior point.
@@ -229,7 +229,7 @@ Fact: $s_k(\mathcal{A}) \le 2^k$.
  \[
  d = d(\mathcal{A}) = \text{largest k such that } s_k(\mathcal{A}) = 2^k.
  \]
-This means that $d$ is the size of the largest set that can be shattered.
+This means that $d$ is the size of the largest set that can be shattered by $\mathcal$.
 \end{flashcard}
 
 \begin{flashcard}[Definition]{Statistic}
@@ -248,7 +248,7 @@ Almost sure convergence of $X_n$ to $X$ is equivalent to
 \end{flashcard}
 
 \begin{flashcard}[Definition]{Convergence in Probability}
-$Xn$ converges to $X$ in probability $(X_n \overset{P}{\longrightarrow} X)$, if
+$X_n$ converges to $X$ in probability $(X_n \overset{P}{\longrightarrow} X)$, if
 \[
 \forall \varepsilon > 0: P\left( \left| X_n - X \right| > \varepsilon \right) \to 0
 \]
@@ -382,7 +382,7 @@ Estimators which minimize the Bayes risk are called \textit{Bayes estimators}.
 \begin{flashcard}[Definition]{Posterior Risk}
  The posterior risk of an estimator $\hat \theta(x^n)$ is 
  \[
- r(\hat \theta | x^n) = \int L(\theta, \hat \theta(x^n)) \pi(\hat \theta | x^n) d\theta
+ r(\hat \theta | x^n) = \int L(\theta, \hat \theta(x^n)) \pi(\theta | x^n) d\theta
  \]
 \end{flashcard}
 
