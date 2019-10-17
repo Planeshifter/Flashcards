@@ -227,7 +227,7 @@ Fact: $s_k(\mathcal{A}) \le 2^k$.
 \begin{flashcard}[Definition]{VC Dimension}
  The Vapnik-Chervonenkis (VC) Dimension is defined as
  \[
- d = d(\mathcal{A}) = \text{largest k such that } s_k(\mathcal{A}) = 2^k.
+ d = d(\mathcal{A}) = \text{largest $k$ such that } s_k(\mathcal{A}) = 2^k.
  \]
 This means that $d$ is the size of the largest set that can be shattered by $\mathcal{A}$.
 \end{flashcard}
@@ -237,7 +237,7 @@ A statistic $T$ is any function of the data $X_1, \ldots, X_n$, i.e. $T=g(X_1,\l
 \end{flashcard}
 
 \begin{flashcard}[Definition]{Almost Sure Convergence}
-$X_n$ converges almost surely to X, written $X_n \overset{a.s.}{\longrightarrow} X$, if, for every $\varepsilon > 0$, 
+$X_n$ converges almost surely to $X$, written $X_n \overset{a.s.}{\longrightarrow} X$, if, for every $\varepsilon > 0$, 
 \[
 P\left( \lim_{n \to \infty} \left| X_n - X \right| < \varepsilon \right) = 1.
 \]
@@ -463,13 +463,13 @@ L^\star(\eta) = \sup_{\theta: \tau(\theta) = \eta} L(\theta).
 \begin{flashcard}[Theorem]{Mean Squared Error (MSE)}
 The mean squared error (MSE) is
 \[
-MSE = \mathbb{E}_\theta \left[ (\hat \theta - \theta)^2 \right] = \int (\hat \theta(x^n) - \theta)^2 p(x^n;\theta) dx^n.
+\text{MSE} = \mathbb{E}_\theta \left[ (\hat \theta - \theta)^2 \right] = \int (\hat \theta(x^n) - \theta)^2 p(x^n;\theta) dx^n.
 \]
 The MSE can be decomposed into variance and bias squared, i.e.
 \[
-MSE = \mathbb{V}_\theta(\hat \theta) + Bias^2,
+\text{MSE} = \mathbb{V}_\theta(\hat \theta) + \textit{Bias}^2,
 \]
-where $Bias = \mathbb{E}_\theta(\hat \theta) - \theta$.
+where $\textit{Bias} = \mathbb{E}_\theta(\hat \theta) - \theta$.
 \end{flashcard}
 
 \begin{flashcard}[Theorem]{Rao-Blackwell Theorem}
